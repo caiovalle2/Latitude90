@@ -2,7 +2,7 @@ package Model;
 import java.util.Random;
 class Jogo{
     Random random = new Random();
-    int dado[] = new int[2], pos_metas[][]= {{8,2},{8,8}}, modo = 0,polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
+    int dado[] = new int[2], pos_metas[][]= {{8,2},{8,8}}, modo = 0, carta = 0, polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
     Jogador jog[];
     char cor[] = {'A','V','R','L'}, time1[] = {cor[0],cor[1]},time2[] = {cor[2],cor[3]};
     {
