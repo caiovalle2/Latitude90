@@ -2,14 +2,14 @@ package Model;
 import java.util.Random;
 class Jogo{
     Random random = new Random();
-    int dado[] = new int[2], pos_metas[][]= {{8,2},{8,8}}, modo = 0, carta = 0, polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
+    int dado[] = new int[2], pos_metas[][]= {{6,4},{5,3},{4,1},{7,1},{8,2},{9,4},{7,7},{8,8},{9,10},{6,10},{5,9},{4,7}}, modo = 0, carta = 0, polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
     Jogador jog[];
     char cor[] = {'A','V','R','L'}, time1[] = {cor[0],cor[1]},time2[] = {cor[2],cor[3]};
     {
-        polo[0] = 4;
-        polo[1] = 8;
-        polo_oposto[0] = 14;
-		polo_oposto[1] = 8;
+        polo[0] = 0;
+        polo[1] = 0;
+        polo_oposto[0] = 13;
+		polo_oposto[1] = 0;
 
     }
      
@@ -19,10 +19,10 @@ class Jogo{
         
         for(int x =0; x<qnt;x++) {
         	if(x >= qnt/2) {
-        		polo[0] = 14;
-                polo[1] = 8;
-                polo_oposto[0] = 4;
-        		polo_oposto[1] = 8;
+        		polo[0] = 13;
+                polo[1] = 0;
+                polo_oposto[0] = 0;
+        		polo_oposto[1] = 0;
         	}
             jog[x] = new Jogador(polo,polo_oposto,cor[x]);
         }
