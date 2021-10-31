@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.*;
+import java.awt.geom.*;
 import javax.swing.*;
 import java.io.*;
 import javax.imageio.*;
@@ -17,6 +18,7 @@ public class Painel extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		int num;
+		Graphics2D g2d = (Graphics2D) g;
 		try {
 			tab = ImageIO.read(new File("src\\Latitude90-Tabuleiro.jpg"));
 		  } catch (IOException e) {
@@ -25,12 +27,17 @@ public class Painel extends JPanel{
 			System.exit(1);
 		}
 		/*Exibir dados*/
+		
 		num = regras.dados[0] -1;
-		g.drawImage(dado.Dado(num),800,0,null);
+		g2d.drawImage(dado.Dado(num),800,0,null);
 		num = regras.dados[1] -1;
-		g.drawImage(dado.Dado(num),900,0,null);
+		g2d.drawImage(dado.Dado(num),900,0,null);
 		/*Exibir Tabuleiro*/
-		g.drawImage(tab,0,0,null);
+		g2d.drawImage(tab,0,0,null);
+		
+		/*Exibir Exploradores*/
+		
+		
 	}
 	
 	  
