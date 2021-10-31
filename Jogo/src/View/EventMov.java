@@ -3,6 +3,7 @@ package View;
 import java.awt.event.*;
 
 public class EventMov implements MouseListener{
+	static int latitude =0, longitude =0, x =0, y =0;
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX(), y = e.getY();
 		
@@ -10,21 +11,23 @@ public class EventMov implements MouseListener{
 		
 	}
 	public void Coordenadas(int x, int y) {
-		int polo1[] = {198,367},polo2[] = {530,367}, raio, latitude =0, longitude =0;
+		int polo1[] = {198,367},polo2[] = {530,367}, raio;
 		double reta1, reta2;
 		System.out.println(x + " " + y);
 		raio = (x-polo2[0])*(x-polo2[0]) + (y-polo2[1])*(y-polo2[1]);
 		if(x > 364) {
 			reta1 = x*0.58 + 58.86;
 			reta2 = x*-0.58 + 673.38;
-			if(reta1>= y && reta2 >= y || reta1 <= y && reta2 <= y) {
+			if(raio <= 1000) {
+				latitude = 13;
+			}
+
+			else if(reta1>= y && reta2 >= y || reta1 <= y && reta2 <= y) {
+				
 				if(y > polo2[1]) {
 					longitude += 6;
 				}
-				if(raio <= 1000) {
-					System.out.println("0");
-				}
-				else if( raio <= 4096) {
+				if( raio <= 4096) {
 					latitude = 12;
 				}
 				else if( raio <= 7569 ) {
@@ -108,15 +111,16 @@ public class EventMov implements MouseListener{
 			reta1 = (x+330)*0.58 + 58.86;
 			reta2 = (x+330)*-0.58 + 673.38;
 			raio = (x-polo1[0])*(x-polo1[0]) + (y-polo1[1])*(y-polo1[1]);
-
-			if(reta1>= y && reta2 >= y || reta1 <= y && reta2 <= y) {
+			
+			if(raio <= 1000) {
+				latitude = 0;
+			}
+			else if(reta1>= y && reta2 >= y || reta1 <= y && reta2 <= y) {
 				if(y > polo1[1]) {
 					longitude += 6;
 				}
-				if(raio <= 1000) {
-					System.out.println("13");
-				}
-				else if( raio <= 4096) {
+				
+				if( raio <= 4096) {
 					latitude = 1;
 				}
 				else if( raio <= 7569 ) {
