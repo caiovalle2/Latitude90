@@ -1,7 +1,7 @@
 package Model;
 
 public class Regras {
-	int modo, qnt;
+	public int modo, qnt, dados[] = {1,1};
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
@@ -11,7 +11,8 @@ public class Regras {
 	}
 	
 	public int[] jogardado() {/*joga os dados e retorna {dado0,dado1}*/
-		return novo.jogardado();
+		dados = novo.jogardado();
+		return dados;
 	}
 	public char dadocolorido() {/*joga o dado colorido e retorna a cor*/
 		char cor = novo.dado_colorido();
