@@ -3,7 +3,7 @@ package View;
 import java.awt.event.*;
 
 public class EventMov implements MouseListener{
-	static int latitude =0, longitude =0, x =0, y =0;
+	int latitude =0, longitude =0;
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX(), y = e.getY();
 		
@@ -11,7 +11,7 @@ public class EventMov implements MouseListener{
 		
 	}
 	public void Coordenadas(int x, int y) {
-		int polo1[] = {198,367},polo2[] = {530,367}, raio;
+		int polo1[] = {198,367},polo2[] = {530,367}, raio, latitude =0, longitude =0;
 		double reta1, reta2;
 		System.out.println(x + " " + y);
 		raio = (x-polo2[0])*(x-polo2[0]) + (y-polo2[1])*(y-polo2[1]);
