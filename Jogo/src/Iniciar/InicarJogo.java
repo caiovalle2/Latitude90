@@ -8,9 +8,13 @@ public class InicarJogo {
 		Regras regras = new Regras(0,2);
 		Dados a = new Dados();
 		
-		 Frame tab = new Frame(regras);
-			// TODO Auto-generated method stub
-			 tab.setVisible(true);
+		TelaInicial inicial = new TelaInicial();
+		 			// TODO Auto-generated method stub
+		 inicial.setVisible(true);
+
+		 
+		 
+			 
 	}
 
 }
