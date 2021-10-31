@@ -26,7 +26,6 @@ public class Frame extends JFrame {
 		p = new Painel(regras);
 		p.addMouseListener(new EventMov());
 		getContentPane().add(p);
-		
 		setBounds(x,y,LARG_DEFAULT,ALT_DEFAULT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
