@@ -7,14 +7,17 @@ import Model.*;
 public class Jogardados implements  ActionListener{
 	Regras regras;
 	Dados imgdados;
-	public Jogardados(Regras regras) {
+	Frame f;
+	public Jogardados(Regras regras, Frame f) {
 		this.regras = regras;
+		this.f = f;
 	}
 	public void actionPerformed(ActionEvent e) {
 		int dados[] = {0,0};
 		
 		dados = regras.jogardado();
 		/*Exibir os dados*/
+		f.repaint();
 		
 	}
 }
