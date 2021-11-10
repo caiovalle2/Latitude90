@@ -93,7 +93,7 @@ class Jogo{
     			return x;
     		}
     	}
-    	return 0;
+    	return -1;
     }
     boolean ver_time(char time[], char a, char b) {/*verifica se o a e b estão no mesmo time*/
     	return (a == time[0] || a == time[1]) && (b == time[0] || b == time[1]) ;
@@ -190,7 +190,10 @@ class Jogo{
         else{
         	dis[0] -= x;
         }
-    	
+        dis[1] = dis[1]%12;
+        if(dis[1] < 0) {
+        	dis[1] += 12;
+        }
         /*Se a posicao que o explorador for movimentar tiver no maximo 1 explorador do outro jogador (ou time se for modo 1) ou for o polo oposto*/
         if((ver_pos(ind_jog,dis[1],dis[0])[1] > -2    && capturar(ind_jog,dis[1],dis[0])) || (jog[ind_jog].polo_oposto[1] == dis[1] && jog[ind_jog].polo_oposto[0] == dis[0]) ){
         	
@@ -204,6 +207,9 @@ class Jogo{
     int[] getposicao(int ind_jog, int ind_exp) {
     	int res[] = {jog[ind_jog].getposicao(ind_exp)[1],jog[ind_jog].getposicao(ind_exp)[0]};
     	return res;
+    }
+    void set_posicao(int ind_jog, int ind_exp, int i, int j) {
+    	jog[ind_jog].setposicao(ind_exp, j, i);
     }
     public boolean ganhou(int ind){
     	int res =0;
