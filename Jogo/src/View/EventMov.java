@@ -1,13 +1,116 @@
 package View;
 
 import java.awt.event.*;
-
+import Model.*;
 public class EventMov implements MouseListener{
 	int latitude =0, longitude =0;
+	int ind_jog =0, ind_exp = 0, lat = 0, lon = 0, dif1, dif2, mov = 0;
+	Regras regras;
+	Frame f;
+	static boolean explorador = false, movimento = false;
+	boolean dados[] = {true,true}, polo = false;
+	EventMov(Regras regras, Frame f) {
+		this.regras = regras;
+		this.f = f;
+	}
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX(), y = e.getY();
-		
+		int pos[] = {0,0};
+		System.out.println("-----------------------------------------------");
 		Coordenadas(x,y);
+		 pos = regras.ver_posicao(ind_jog, longitude, latitude);
+		 
+		System.out.println("posicao: " + pos[1]);
+		ind_jog = regras.ind;
+		if(pos[1] > 0  && !explorador) {
+			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
+			lat = latitude;
+			lon = longitude;
+			explorador = true;
+			polo = false;
+			System.out.println("Explorador escolhido!! indice " + ind_exp);
+		}
+		else if(explorador) {
+			
+			
+			if(regras.getposicao(ind_jog, ind_exp)[1] == 13 || regras.getposicao(ind_jog, ind_exp)[1] == 0) {
+				/*Necessario verificar se o explorador está no polo oposto*/
+				regras.set_posicao(ind_jog, ind_exp, regras.getposicao(ind_jog, ind_exp)[1], longitude);
+				System.out.println("Posicao depois do polo "+ regras.getposicao(ind_jog, ind_exp)[0] + " " + regras.getposicao(ind_jog, ind_exp)[1] );
+				lon = longitude;
+				polo = true;
+			}
+			
+			dif1 = lat - latitude;
+			dif2 = lon - longitude;
+			int cam1 = 20;
+			if((lon > longitude)) {
+				cam1 = dif2 -12;
+			}
+			else if(lon < longitude) {
+				cam1 = dif2 + 12;
+			}
+			
+			if(Math.abs(cam1) < Math.abs(dif2)) {
+				dif2 = cam1;
+			}
+			
+			System.out.println("diferenca:  " + dif2);
+			
+			if(dados[0] && (Math.abs(dif1) == regras.dados[0] || Math.abs(dif2) == regras.dados[0])) {
+				if(Math.abs(dif1) == regras.dados[0]) {
+					mov = regras.movimentar(ind_jog, ind_exp, dif1, -2);
+				}
+				else if( Math.abs(dif2) == regras.dados[0]) {
+					mov = regras.movimentar(ind_jog, ind_exp, dif2, -1);
+				}
+				
+				if(mov == 1) {
+					dados[0] = false;
+					mov = 0;
+					explorador = false;
+					
+					System.out.println("Posicao pos movimento "+ regras.getposicao(ind_jog, ind_exp)[0] + " " + regras.getposicao(ind_jog, ind_exp)[1] );
+					System.out.println("Executando movimento 1 !!");
+				}
+				else if(polo) {
+					System.out.println("ERRO");
+					regras.set_posicao(ind_jog, ind_exp, regras.getposicao(ind_jog, ind_exp)[1], 0);
+					polo = false;
+				}
+				
+			}
+			else if(dados[1] && (Math.abs(dif1) == regras.dados[1] || Math.abs(dif2) == regras.dados[1])) {
+				if(Math.abs(dif1) == regras.dados[1]) {
+					mov = regras.movimentar(ind_jog, ind_exp, dif1, -2);
+				}
+				else if( Math.abs(dif2) == regras.dados[1]) {
+					mov = regras.movimentar(ind_jog, ind_exp, dif2, -1);
+				}
+				if(mov == 1) {
+					explorador = false;
+					dados[1] = false;
+					mov = 0;
+					System.out.println("Posicao pos movimento "+ regras.getposicao(ind_jog, ind_exp)[0] + " " + regras.getposicao(ind_jog, ind_exp)[1] );
+					System.out.println("Executando movimento 2!!");
+				}
+				else if(polo) {
+					regras.set_posicao(ind_jog, ind_exp, regras.getposicao(ind_jog, ind_exp)[1], 0);
+					polo = false;
+				}
+			}
+			
+			f.repaint();
+			 
+		}
+		if(!dados[0] && !dados[1]) {
+			dados[0] = true;
+			dados[1] = true;
+			explorador = false;
+			System.out.println("Proxima rodada");
+			regras.ind++;
+		}
+		
 		
 	}
 	public void Coordenadas(int x, int y) {
@@ -200,6 +303,8 @@ public class EventMov implements MouseListener{
 			}
 		}
 		System.out.println( "latitude " +latitude +" " + "longitude " + longitude);
+		this.latitude = latitude;
+		this.longitude = longitude;
 
 	}
 	 public void mousePressed(MouseEvent e) {}
