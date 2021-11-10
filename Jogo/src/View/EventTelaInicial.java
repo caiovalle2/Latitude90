@@ -11,16 +11,16 @@ public class EventTelaInicial implements MouseListener{
 		int x = e.getX(), y = e.getY(), estado =0;
 		Regras regras = new Regras(0,0);
 		
-		if((x > 300 && y > 100) && (x < 500 && y <150)) {
+		if((x > 300 && y > 60) && (x < 500 && y <110)) {
 			regras = new Regras(0,2);
 			estado = 1;
 		}
-		else if((x > 300 && y > 160) && (x < 500 && y <210)) {
+		else if((x > 300 && y > 120) && (x < 500 && y <170)) {
 			regras = new Regras(0,4);
 			estado = 1;
 
 		}
-		else if((x > 300 && y > 220) && (x < 500 && y <270)) {
+		else if((x > 300 && y > 180) && (x < 500 && y <230)) {
 			regras = new Regras(1,4);
 			estado =1;
 
