@@ -9,7 +9,7 @@ public class TelaInicial extends JFrame{
 	
 	public TelaInicial() {
 		JButton carregar = new JButton("Carregar partida");
-		carregar.setBounds(300, 280, 200, 50);
+		carregar.setBounds(300, 240, 200, 50);
 		add(carregar);
 		PainelInicial inicial = new PainelInicial();
 		inicial.addMouseListener(new EventTelaInicial(this));
