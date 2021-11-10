@@ -117,7 +117,7 @@ class Jogo{
     	}
     	if(pos[1] == 1) {/*Se a posicao que o explorador vai se mover ja tem 1 explorador do mesmo jogador*/
     		for (int x[]: pos_metas) {
-    			if(i == x[0] && j == x[1]) {/*Se tiver uma meta*/
+    			if(j == x[0] && i == x[1]) {/*Se tiver uma meta*/
     				meta = true;
     				x[1] = -1;
     				x[0] = -1;
