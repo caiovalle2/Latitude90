@@ -23,7 +23,7 @@ public class EventMov implements MouseListener{
 		 
 		System.out.println("posicao: " + pos[1]);
 		
-		if(pos[1] > 0  && !explorador) {
+		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador) {
 			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
 			lat = latitude;
 			lon = longitude;
