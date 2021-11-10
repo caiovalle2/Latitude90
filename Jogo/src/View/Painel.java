@@ -498,10 +498,11 @@ public class Painel extends JPanel
 		MatrizTab[11][11][1] = 378;
 		
 		//Exibir Exploradores
-		Paint cor[] = {Color.blue,Color.YELLOW};
+		Paint cor[] = {Color.blue,Color.YELLOW,Color.red, Color.green};
 		for (int i=0; i< regras.qnt ; i++)
 	   {
 			int lat = 0, lon = 0;
+			/*Exibe os 6 exploradores do jogador*/
 	      for (int j=0; j < 6 ; j++) 
 	      {
 	    	   lat = regras.getposicao(i, j)[1];
@@ -513,6 +514,7 @@ public class Painel extends JPanel
 
 	    	  }  	      
 	      }
+	      /*Exibe os exploradores no polo*/
 	      if(i == regras.rodada()) {
     		  if(lat == 0) {
 	    		  g2d.fillOval(198, 367, 10, 10);
