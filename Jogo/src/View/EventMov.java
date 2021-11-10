@@ -18,10 +18,11 @@ public class EventMov implements MouseListener{
 		int pos[] = {0,0};
 		System.out.println("-----------------------------------------------");
 		Coordenadas(x,y);
+		ind_jog = regras.ind;
 		 pos = regras.ver_posicao(ind_jog, longitude, latitude);
 		 
 		System.out.println("posicao: " + pos[1]);
-		ind_jog = regras.ind;
+		
 		if(pos[1] > 0  && !explorador) {
 			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
 			lat = latitude;
