@@ -1,7 +1,7 @@
 package Model;
 
 public class Regras {
-	public int modo, qnt, dados[] = {1,1};
+	public int modo, qnt, dados[] = {1,1}, ind =0;
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
@@ -23,8 +23,22 @@ public class Regras {
 		int indice = novo.compara_cor(cor);
 		novo.acao_dado_colorido(ind_jog, indice, ind_exp);
 	}
+	public int rodada() {
+		ind = ind%qnt;
+		return ind;
+	}
 	public int[] getposicao(int ind_jog,int ind_exp) {/*retorna a posicao do explorador*/
 		return novo.getposicao(ind_jog, ind_exp);
+	}
+	public int[] ver_posicao(int ind_jog, int i, int j) {
+		
+		return novo.ver_pos(ind_jog, i, j);
+	}
+	public int get_explorador(int ind_jog, int i,int j) {
+		return novo.ver_exp(ind_jog, i, j);
+	}
+	public void set_posicao(int ind_jog, int ind_exp, int i, int j) {
+		novo.set_posicao(ind_jog, ind_exp, i, j);
 	}
 	public int movimentar(int ind_jog, int ind_exp, int dado, int sentido) {/*movimenta se possível o explorador no sentido escolhido*/
 		return novo.movimentar(ind_jog, ind_exp, dado, sentido);
