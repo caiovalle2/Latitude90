@@ -11,7 +11,7 @@ public class Frame extends JFrame {
 	
 	public Frame(Regras regras) {
 		JButton dados = new JButton("Jogar Dados");
-		dados.setBounds(800,120,200,50);
+		dados.setBounds(850,500,200,50);
 		dados.addActionListener(new Jogardados(regras,this));
 		add(dados);
 		Toolkit tk=Toolkit.getDefaultToolkit();
@@ -24,7 +24,7 @@ public class Frame extends JFrame {
 		
 		/*Painel do jogo*/
 		p = new Painel(regras);
-		p.addMouseListener(new EventMov());
+		p.addMouseListener(new EventMov(regras,this));
 		getContentPane().add(p);
 		setBounds(x,y,LARG_DEFAULT,ALT_DEFAULT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
