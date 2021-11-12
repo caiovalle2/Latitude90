@@ -45,6 +45,7 @@ public class Regras {
 	}
 	
 	public boolean ganhou(int ind_jog) {/*verifica se todos os 6 exploradores do jogador estão no polo oposto*/
+		
 		return novo.ganhou(ind_jog);
 	}
 	public char ver_ganhador() {/*Faz a contagem dos pontos e retorna quem tiver maior pontuacao*/
