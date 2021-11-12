@@ -26,7 +26,7 @@ class Jogador{
     	exploradores[ind][0] = j;
     	exploradores[ind][1] = i;
     	
-    	if(exploradores[ind][0] == polo_oposto[0] && exploradores[ind][1] == polo_oposto[1]) {
+    	if(exploradores[ind][0] == polo_oposto[0]) {
     		status_exp[ind] = 1;
     		pontos++;
     	}
