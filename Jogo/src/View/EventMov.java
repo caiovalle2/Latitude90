@@ -23,7 +23,7 @@ public class EventMov implements MouseListener{
 		 
 		System.out.println("posicao: " + pos[1]);
 		
-		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador) {
+		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador && !Jogardados.estado) {
 			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
 			lat = latitude;
 			lon = longitude;
@@ -56,13 +56,11 @@ public class EventMov implements MouseListener{
 				dif2 = cam1;
 			}
 			
-			System.out.println("diferenca:  " + dif2);
-			
 			if(dados[0] && (Math.abs(dif1) == regras.dados[0] || Math.abs(dif2) == regras.dados[0])) {
-				if(Math.abs(dif1) == regras.dados[0]) {
+				if(Math.abs(dif1) == regras.dados[0] && (lon == longitude || latitude == 13 || latitude == 0)) {
 					mov = regras.movimentar(ind_jog, ind_exp, dif1, -2);
 				}
-				else if( Math.abs(dif2) == regras.dados[0]) {
+				else if( Math.abs(dif2) == regras.dados[0] && lat == latitude) {
 					mov = regras.movimentar(ind_jog, ind_exp, dif2, -1);
 				}
 				
@@ -82,10 +80,10 @@ public class EventMov implements MouseListener{
 				
 			}
 			else if(dados[1] && (Math.abs(dif1) == regras.dados[1] || Math.abs(dif2) == regras.dados[1])) {
-				if(Math.abs(dif1) == regras.dados[1]) {
+				if(Math.abs(dif1) == regras.dados[1] && (lon == longitude || latitude == 13 || latitude == 0)) {
 					mov = regras.movimentar(ind_jog, ind_exp, dif1, -2);
 				}
-				else if( Math.abs(dif2) == regras.dados[1]) {
+				else if( Math.abs(dif2) == regras.dados[1] && lat == latitude) {
 					mov = regras.movimentar(ind_jog, ind_exp, dif2, -1);
 				}
 				if(mov == 1) {
@@ -101,6 +99,13 @@ public class EventMov implements MouseListener{
 				}
 			}
 			
+			if((lat != 13 && lat != 0) &&  (regras.getposicao(ind_jog, ind_exp)[1] == 13 || regras.getposicao(ind_jog, ind_exp)[1] == 0)) {
+				regras.set_posicao(ind_jog, ind_exp, regras.getposicao(ind_jog, ind_exp)[1], -1);
+			}
+			
+			if(regras.ganhou(ind_jog)) {
+				System.out.println("Ganhou");
+			}
 			f.repaint();
 			 
 		}
@@ -109,6 +114,7 @@ public class EventMov implements MouseListener{
 			dados[1] = true;
 			explorador = false;
 			System.out.println("Proxima rodada");
+			Jogardados.estado = true;
 			regras.ind++;
 		}
 		
@@ -117,7 +123,7 @@ public class EventMov implements MouseListener{
 	public void Coordenadas(int x, int y) {
 		int polo1[] = {198,367},polo2[] = {530,367}, raio, latitude =0, longitude =0;
 		double reta1, reta2;
-		System.out.println(x + " " + y);
+		System.out.println(x + "," + y);
 		raio = (x-polo2[0])*(x-polo2[0]) + (y-polo2[1])*(y-polo2[1]);
 		if(x > 364) {
 			reta1 = x*0.58 + 58.86;
