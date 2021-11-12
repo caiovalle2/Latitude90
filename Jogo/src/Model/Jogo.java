@@ -195,7 +195,7 @@ class Jogo{
         	dis[1] += 12;
         }
         /*Se a posicao que o explorador for movimentar tiver no maximo 1 explorador do outro jogador (ou time se for modo 1) ou for o polo oposto*/
-        if((ver_pos(ind_jog,dis[1],dis[0])[1] > -2    && capturar(ind_jog,dis[1],dis[0])) || (jog[ind_jog].polo_oposto[1] == dis[1] && jog[ind_jog].polo_oposto[0] == dis[0]) ){
+        if(((ver_pos(ind_jog,dis[1],dis[0])[1] > -2    && capturar(ind_jog,dis[1],dis[0])) ||  jog[ind_jog].polo_oposto[0] == dis[0]) && jog[ind_jog].polo[0] != dis[0]){
         	
         	jog[ind_jog].setposicao(ind_exp, dis[1], dis[0]);
         	return 1;
