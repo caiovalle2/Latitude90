@@ -139,6 +139,10 @@ class Jogo{
     				return false;
     			}
     		}
+    		if(jog[ind_jog2].getprotegido == ver_exp(ind_jog2, i, j)) {/*Se o explorador inimigo estiver protegido*/
+    			return false;
+    		}
+    		
     		System.out.println("Capturou!");
     		/*Captura o explorador advesário*/
     		ind_exp = ver_exp(ind_jog2,i,j);
@@ -202,6 +206,79 @@ class Jogo{
         }        
         
         return 0;
+    }
+    /*-----------------------------------------//---------------------------------------//------------------------------------------------*/
+    public boolean acaoC1(int ind_jog, int ind_exp, int sent) {
+    	if(this.movimentar(ind_jog, ind_exp, 6, sent) != 1) {
+    		return false;
+    	}
+    	return true;
+    }
+    public boolean acaoC2(int ind_jog, int ind_exp, int ind_exp2, int sent, int sent2) {
+    	if(this.movimentar(ind_jog, ind_exp, 3, sent) != 1 || this.movimentar(ind_jog, ind_exp2, 3, sent2) != 1) {
+    		return false;
+    	}
+    	return true;
+    }
+    public boolean acaoC3(int ind_jog, int ind_exp, int sent) {
+    	if(sent == -1 || sent == -2) {
+    		return false;
+    	}
+    	if(this.movimentar(ind_jog, ind_exp, 3, sent) != 1) {
+    		return false;
+    	}
+    	return true;
+    }
+    public boolean acaoC4(int ind_jog, int[] exp, int[] sent) {
+    	int a = 0;
+    	for(int i: exp) {
+    		if(this.movimentar(ind_jog, i, 3, sent[a]) != 1) {
+    			return false;
+    		}
+    		a++;
+    	}
+    	return true
+    }
+    public void acaoC6(int ind_jog, int ind_exp, int ind_exp2) {
+    	jog[ind_jog].vai_polo_oposto(ind_exp);
+    	jog[ind_jog].vai_polo_oposto(ind_exp2);
+    }
+    public void acaoC8(int ind_jog, int ind_exp) {
+    	jog[ind_jog].vai_polo_oposto(ind_exp);
+    }
+    public boolean acaoC9(int ind_jog, int[] exp, int[] sent) {
+    	int a = 0;
+    	for(int i: exp) {
+    		if(this.movimentar(ind_jog, i, 2, sent[a]) != 1) {
+    			return false;
+    		}
+    		a++;
+    	}
+    	return true
+    }
+    public void acaoC10(int ind_jog, int ind_exp) {
+    	jog[ind_jog].addprotegido(ind_exp);
+    }
+    public boolean acaoC11(int ind_jog, int ind_exp, int ind_exp2, int ind_exp3, int sent, int sent2, int sent3) {
+    	if(this.movimentar(ind_jog, ind_exp, 3, sent) != 1 || this.movimentar(ind_jog, ind_exp2, 3, sent2) != 1 || this.movimentar(ind_jog, ind_exp3, 3, sent3)) {
+    		return false;
+    	}
+    	return true;
+    }
+    public boolean acaoC12(int ind_jog, int ind_exp, int ind_exp2, int x, int sent, int sent2) {
+    	if(this.movimentar(ind_jog, ind_exp, x, sent) != 1 || this.movimentar(ind_jog, ind_exp2, x, sent2) != 1) {
+    		return false;
+    	}
+    	return true;
+    }
+    public void acaoC13(int ind_jog, int ind_exp) {
+    	jog[int_jog].volta_polo(ind_exp);
+    }
+    public void acaoC14(int ind_jog) {
+    	jog[ind_jog].bloqueia();
+    }
+    public void acaoC17(int ind_jog) {
+    	jog[ind_jog].bloqueia2();
     }
     /*-----------------------------------------//---------------------------------------//------------------------------------------------*/
     int[] getposicao(int ind_jog, int ind_exp) {
