@@ -2,7 +2,7 @@ package Model;
 
 
 class Jogador{
-    int exploradores[][] = new int[6][2], pontos =0, metas = 0, status_exp[] = {0,0,0,0,0,0}, polo[] = new int[2], polo_oposto[] = new int[2], ind_cartas = 0;
+    int exploradores[][] = new int[6][2], pontos =0, metas = 0, status_exp[] = {0,0,0,0,0,0}, polo[] = new int[2], polo_oposto[] = new int[2], ind_cartas = 0, protegido = 0, bloqueado = 0;
     private int cartas[] = new int[10];
     char cor ;
     
@@ -63,5 +63,20 @@ class Jogador{
     void vai_polo_oposto(int ind) {
     	setposicao(ind, polo_oposto[1],polo_oposto[0]);
 
+    }
+    void addprotegido(int ind) {
+    	this.protegido = ind;
+    }
+    void getprotegido() {
+    	return protegido;
+    }
+    void bloqueia() {
+    	this.bloqueado = 1;
+    }
+    void bloqueia2() {
+    	this.bloqueado = 2;
+    }
+    void desbloqueia() {
+    	this.bloqueado = 0;
     }
 }
