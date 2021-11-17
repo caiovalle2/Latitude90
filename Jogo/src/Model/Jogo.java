@@ -239,9 +239,16 @@ class Jogo{
     	}
     	return true
     }
+    public int[] acaoC5() {
+    	return this.jogardado();
+    }
     public void acaoC6(int ind_jog, int ind_exp, int ind_exp2) {
     	jog[ind_jog].vai_polo_oposto(ind_exp);
     	jog[ind_jog].vai_polo_oposto(ind_exp2);
+    }
+    public int acaoC7() {
+    	int acao = random.nextInt(6)+1;
+    	return acao;
     }
     public void acaoC8(int ind_jog, int ind_exp) {
     	jog[ind_jog].vai_polo_oposto(ind_exp);
@@ -275,10 +282,68 @@ class Jogo{
     	jog[int_jog].volta_polo(ind_exp);
     }
     public void acaoC14(int ind_jog) {
-    	jog[ind_jog].bloqueia();
+    	jog[ind_jog].bloqueia(1);
+    }
+    public void acaoC15(int ind_jog) {
+    	int i = 0;
+    	if(modo == 1 ) { /*Se for em dupla*/
+    		for(Jogador j: jog) {
+    			if(i != ind_jog) {
+    				for(int x = 0; x < 6; x++) {
+    					if(!j.status_exp(x)) {
+    						j.volta_polo(x);
+    					}
+    				}
+    			}
+    			i++;
+    		}
+    	}
+    	else {
+    		for(Jogador j: jog) {
+    			if(i != ind_jog && !(ver_time(time1,jog[ind_jog].getcor(),jog[i].getcor()) || ver_time(time2,jog[ind_jog].getcor(),jog[i].getcor()))) {
+    				for(int x = 0; x < 6; x++) {
+    					if(!j.status_exp(x)) {
+    						j.volta_polo(x);
+    					}
+    				}
+    			}
+    			i++;
+    		}
+    	}
+    }
+    public void acaoC16(int ind_jog) {
+    	int i = 0;
+    	if(modo == 1) { /*Se for em dupla*/
+    		for(Jogador j: jog) {
+    			if(i != ind_jog && !(ver_time(time1,jog[ind_jog].getcor(),jog[i].getcor()) || ver_time(time2,jog[ind_jog].getcor(),jog[i].getcor()))) {
+    				for(int x = 0; x < 6; x++) {
+    					for (int a[]: pos_metas) {
+    	    				if(j.getposicao(x)[0] == a[0] && j.getposicao(x)[1] == a[1]) {
+    	    					j.volta_polo(x);
+    	    				}
+    	    			}
+    				}
+    			}
+    			i++;
+    		}
+    	}
+    	else {
+    		for(Jogador j: jog) {
+    			if(i != ind_jog) {
+    				for(int x = 0; x < 6; x++) {
+    					for (int a[]: pos_metas) {
+    	    				if(j.getposicao(x)[0] == a[0] && j.getposicao(x)[1] == a[1]) {
+    	    					j.volta_polo(x);
+    	    				}
+    	    			}
+    				}
+    			}
+    			i++;
+    		}
+    	}
     }
     public void acaoC17(int ind_jog) {
-    	jog[ind_jog].bloqueia2();
+    	jog[ind_jog].bloqueia(2);
     }
     /*-----------------------------------------//---------------------------------------//------------------------------------------------*/
     int[] getposicao(int ind_jog, int ind_exp) {
