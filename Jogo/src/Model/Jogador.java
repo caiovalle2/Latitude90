@@ -67,7 +67,7 @@ class Jogador{
     void addprotegido(int ind) {
     	this.protegido = ind;
     }
-    void getprotegido() {
+    int getprotegido() {
     	return protegido;
     }
     void bloqueia(int x) {
