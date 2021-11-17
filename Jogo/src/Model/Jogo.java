@@ -267,7 +267,7 @@ class Jogo{
     	jog[ind_jog].addprotegido(ind_exp);
     }
     public boolean acaoC11(int ind_jog, int ind_exp, int ind_exp2, int ind_exp3, int sent, int sent2, int sent3) {
-    	if(this.movimentar(ind_jog, ind_exp, 3, sent) != 1 || this.movimentar(ind_jog, ind_exp2, 3, sent2) != 1 || this.movimentar(ind_jog, ind_exp3, 3, sent3)) {
+    	if(this.movimentar(ind_jog, ind_exp, 3, sent) != 1 || this.movimentar(ind_jog, ind_exp2, 3, sent2) != 1 || this.movimentar(ind_jog, ind_exp3, 3, sent3) != 1) {
     		return false;
     	}
     	return true;
@@ -279,7 +279,7 @@ class Jogo{
     	return true;
     }
     public void acaoC13(int ind_jog, int ind_exp) {
-    	jog[int_jog].volta_polo(ind_exp);
+    	jog[ind_jog].volta_polo(ind_exp);
     }
     public void acaoC14(int ind_jog) {
     	jog[ind_jog].bloqueia(1);
