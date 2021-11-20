@@ -139,9 +139,10 @@ class Jogo{
     				return false;
     			}
     		}
-    		if(jog[ind_jog2].getprotegido == ver_exp(ind_jog2, i, j)) {/*Se o explorador inimigo estiver protegido*/
+    		
+    		/*if(jog[ind_jog2].getprotegido() == ver_exp(ind_jog2, i, j)) {Se o explorador inimigo estiver protegido
     			return false;
-    		}
+    		}*/
     		
     		System.out.println("Capturou!");
     		/*Captura o explorador advesário*/
@@ -237,7 +238,7 @@ class Jogo{
     		}
     		a++;
     	}
-    	return true
+    	return true;
     }
     public int[] acaoC5() {
     	return this.jogardado();
@@ -261,7 +262,7 @@ class Jogo{
     		}
     		a++;
     	}
-    	return true
+    	return true;
     }
     public void acaoC10(int ind_jog, int ind_exp) {
     	jog[ind_jog].addprotegido(ind_exp);
