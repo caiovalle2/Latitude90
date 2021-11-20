@@ -18,8 +18,8 @@ public class Painel extends JPanel
 	public static int Latitude=12;
 	public static int Longitude=12;
 	public static int [][][] MatrizTab  = new int[Latitude][Longitude][2];
-	
-    int expverde[][] = {{46,564},{57,572}, {70,578},{82,585},{94,590},{106,595}};
+
+    int expverde[][] = {{42,560},{53,568}, {66,574},{78,581},{90,586},{102,591}};
     int exppreto[][] = {{44,174},{54,163}, {67,154},{78,148},{88,144},{102,139}};
     int expazul[][] = {{624,136},{636,142}, {651,148},{662,152},{674,161},{686,170}};
     int expamarelo[][] = {{626,594},{637,588}, {650,582},{660,577},{673,567},{683,561}};
@@ -508,6 +508,7 @@ public class Painel extends JPanel
 		Paint cor[] = {Color.blue,Color.YELLOW,Color.red, Color.green};
 		
 		int cont[] = {0,0,0,0};
+		boolean polo = false, polo1 = false;
 		for (int i=0; i< regras.qnt ; i++)
 	   {
 			int lat = 0, lon = 0;
@@ -522,6 +523,14 @@ public class Painel extends JPanel
 			   	  g2d.fillOval(MatrizTab[lat-1][lon][0], MatrizTab[lat-1][lon][1], 10, 10);
 
 	    	  }
+	    	  else if( i == regras.rodada()) {
+	    		  if(lat == 13) {
+	    			  polo = true;
+	    		  }
+	    		  else {
+	    			  polo1 = true;
+	    		  }
+	    	  }
 	    	  /*Conta quantos exploradores estão no polo oposto*/
 	    	  if(lon == -1) {
 	    		  cont[i]++;
@@ -529,11 +538,13 @@ public class Painel extends JPanel
 	      }
 	      /*Exibe os exploradores no polo*/
 	      if(i == regras.rodada()) {
-    		  if(lat == 0) {
+    		  if(polo1 == true) {
 	    		  g2d.fillOval(198, 367, 10, 10);
+	    		  polo1 = false;
 	    	  }
-	    	  else if(lat == 13) {
+	    	  else if(polo == true) {
 	    		  g2d.fillOval(530, 367, 10, 10);
+	    		  polo = false;
 	    	  }
     	  }
 	   }
