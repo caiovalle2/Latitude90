@@ -354,6 +354,10 @@ class Jogo{
     void set_posicao(int ind_jog, int ind_exp, int i, int j) {
     	jog[ind_jog].setposicao(ind_exp, j, i);
     }
+    
+    int metas(int ind_jog) {
+    	return jog[ind_jog].metas;
+    }
     public boolean ganhou(int ind){
     	int res =0;
         for(int x =0; x<6;x++) {
