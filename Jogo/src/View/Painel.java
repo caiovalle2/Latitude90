@@ -19,11 +19,18 @@ public class Painel extends JPanel
 	public static int Longitude=12;
 	public static int [][][] MatrizTab  = new int[Latitude][Longitude][2];
 
-    int expverde[][] = {{42,560},{53,568}, {66,574},{78,581},{90,586},{102,591}};
-    int exppreto[][] = {{44,174},{54,163}, {67,154},{78,148},{88,144},{102,139}};
-    int expazul[][] = {{624,136},{636,142}, {651,148},{662,152},{674,161},{686,170}};
-    int expamarelo[][] = {{626,594},{637,588}, {650,582},{660,577},{673,567},{683,561}};
+	int expverde[][] = {{42,560},{53,568}, {66,574},{78,581},{90,586},{102,591}};
+    int exppreto[][] = {{40,168},{50,160}, {64,152},{74,146},{88,140},{100,135}};
+    int expazul[][] = {{620,132},{632,138}, {645,145},{657,152},{668,159},{680,166}};
+    int expamarelo[][] = {{622,590},{634,584}, {646,578},{656,573},{669,563},{679,557}};
     int exp[][][] = {expverde,exppreto,expazul,expamarelo};
+    
+    int metaverde[][] = {{30,510},{40,520},{50,530},{60,540},{74,548},{86,555},{98,561},{112,568},{126,571},{138,577},{153,581},{167,583}};
+    int metapreto[][] = {{30,216},{40,206},{50,196},{60,186},{70,178},{85,173},{97,166},{110,161},{123,155},{135,151},{150,149},{163,145}};
+    int metaazul[][] = {{690,215},{680,205},{669,195},{659,185},{647,179},{634,171},{622,165},{610,159},{597,155},{583,151},{569,147},{556,144}};
+    int metaamarelo[][] = {{690,512},{681,522},{670,531},{659,539},{649,549},{636,556},{623,561},{611,568},{597,573},{584,576},{569,579},{556,583}};
+
+    int metas[][][] = {metaverde,metapreto,metaazul,metaamarelo};
     int cont[] = {0,0,0,0};
     
 	public Painel(Regras regras) {
@@ -523,7 +530,7 @@ public class Painel extends JPanel
 			   	  g2d.fillOval(MatrizTab[lat-1][lon][0], MatrizTab[lat-1][lon][1], 10, 10);
 
 	    	  }
-	    	  else if( i == regras.rodada()) {
+	    	  else if( i == regras.rodada() && lon != -1) {
 	    		  if(lat == 13) {
 	    			  polo = true;
 	    		  }
@@ -553,6 +560,12 @@ public class Painel extends JPanel
 			for(int j =0; j <cont[i];j++) {
 				g2d.setPaint(cor[i]);
 				 g2d.fillOval(exp[i][j][0], exp[i][j][1], 10, 10);
+			}
+			for(int j = 0; j<regras.metas(i);j++) {
+				
+				g2d.setPaint(cor[i]);
+				 g2d.fillOval(metas[i][j][0], metas[i][j][1], 10, 10);
+				
 			}
 			 
 		}
