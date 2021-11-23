@@ -43,11 +43,13 @@ public class Regras {
 	public int metas(int ind_jog) {
 		return novo.metas(ind_jog);
 	}
-	public int movimentar(int ind_jog, int ind_exp, int dado, int sentido) {/*movimenta se possÌvel o explorador no sentido escolhido*/
+	public int movimentar(int ind_jog, int ind_exp, int dado, int sentido) {/*movimenta se poss√≠vel o explorador no sentido escolhido*/
 		return novo.movimentar(ind_jog, ind_exp, dado, sentido);
 	}
-	
-	public boolean ganhou(int ind_jog) {/*verifica se todos os 6 exploradores do jogador est„o no polo oposto*/
+	public void conquista_polo(int ind_jog, int exp) {/*o explorador conquista o polo oposto*/
+		novo.conquista_polo(ind_jog, exp);
+	}
+	public boolean ganhou(int ind_jog) {/*verifica se todos os 6 exploradores do jogador est√£o no polo oposto*/
 		
 		return novo.ganhou(ind_jog);
 	}
