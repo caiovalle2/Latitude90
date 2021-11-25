@@ -1,13 +1,17 @@
 package Model;
 
 public class Regras {
-	public int modo, qnt, dados[] = {1,1}, ind =0;
+	public int modo, qnt, dados[] = {1,1}, ind =0, indice[] = {0,1,2,3}, i = 0;
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
 		this.qnt = qnt;
-		novo = new Jogo(modo,qnt);
-		
+		novo = new Jogo(modo,qnt);		
+	}
+	
+	public boolean indices() {
+		i++;
+		return i == qnt;
 	}
 	
 	public int[] jogardado() {/*joga os dados e retorna {dado0,dado1}*/
@@ -25,7 +29,7 @@ public class Regras {
 	}
 	public int rodada() {
 		ind = ind%qnt;
-		return ind;
+		return indice[ind];
 	}
 	public int[] getposicao(int ind_jog,int ind_exp) {/*retorna a posicao do explorador*/
 		return novo.getposicao(ind_jog, ind_exp);
