@@ -18,7 +18,7 @@ public class EventMov implements MouseListener{
 		int pos[] = {0,0};
 		System.out.println("-----------------------------------------------");
 		Coordenadas(x,y);
-		ind_jog = regras.ind;
+		ind_jog = regras.indice[regras.ind];
 		 pos = regras.ver_posicao(ind_jog, longitude, latitude);
 		 
 		System.out.println("posicao: " + pos[1]);
