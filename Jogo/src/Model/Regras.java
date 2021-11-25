@@ -2,6 +2,7 @@ package Model;
 
 public class Regras {
 	public int modo, qnt, dados[] = {1,1}, ind =0, indice[] = {0,1,2,3}, i = 0;
+	public boolean ord_ind = false;
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
@@ -9,10 +10,6 @@ public class Regras {
 		novo = new Jogo(modo,qnt);		
 	}
 	
-	public boolean indices() {
-		i++;
-		return i == qnt;
-	}
 	
 	public int[] jogardado() {/*joga os dados e retorna {dado0,dado1}*/
 		dados = novo.jogardado();
