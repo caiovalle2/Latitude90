@@ -3,11 +3,16 @@ package View;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Arrays.*;
 import Model.*;
 public class Jogardados implements  ActionListener{
 	Regras regras;
 	Dados imgdados;
 	Frame f;
+	int soma[] = {0,0,0,0}, i = 0;
 	static boolean estado = true;
 	public Jogardados(Regras regras, Frame f) {
 		this.regras = regras;
@@ -20,7 +25,6 @@ public class Jogardados implements  ActionListener{
 			
 			dados = regras.jogardado();
 			/*Exibir os dados*/
-			f.repaint();
 			estado = false;
 		}
 		
@@ -28,7 +32,7 @@ public class Jogardados implements  ActionListener{
 			char colorido = regras.dadocolorido();
 			
 		}
-		
+		f.repaint();
 		
 	}
 }
