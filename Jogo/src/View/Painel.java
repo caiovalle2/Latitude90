@@ -23,15 +23,19 @@ public class Painel extends JPanel
     int exppreto[][] = {{40,168},{50,160}, {64,152},{74,146},{88,140},{100,135}};
     int expazul[][] = {{620,132},{632,138}, {645,145},{657,152},{668,159},{680,166}};
     int expamarelo[][] = {{622,590},{634,584}, {646,578},{656,573},{669,563},{679,557}};
-    int exp[][][] = {expverde,exppreto,expazul,expamarelo};
+    int exp[][][] = {expverde,expamarelo,exppreto,expazul};
     
     int metaverde[][] = {{30,510},{40,520},{50,530},{60,540},{74,548},{86,555},{98,561},{112,568},{126,571},{138,577},{153,581},{167,583}};
     int metapreto[][] = {{30,216},{40,206},{50,196},{60,186},{70,178},{85,173},{97,166},{110,161},{123,155},{135,151},{150,149},{163,145}};
     int metaazul[][] = {{690,215},{680,205},{669,195},{659,185},{647,179},{634,171},{622,165},{610,159},{597,155},{583,151},{569,147},{556,144}};
     int metaamarelo[][] = {{690,512},{681,522},{670,531},{659,539},{649,549},{636,556},{623,561},{611,568},{597,573},{584,576},{569,579},{556,583}};
+    
+    int metas[][][] = {metaverde,metaamarelo,metapreto,metaazul};
+    
+	Paint cor[] = {Color.green,Color.YELLOW,Color.black, Color.blue};
 
-    int metas[][][] = {metaverde,metapreto,metaazul,metaamarelo};
     int cont[] = {0,0,0,0};
+    
     
 	public Painel(Regras regras) {
 		this.regras = regras;
@@ -51,11 +55,11 @@ public class Painel extends JPanel
 		//Exibir Cor de Jogador 
 		//Dado esquerda
 		Rectangle2D rtE=new Rectangle2D.Double(795,555,150,150);
-		g2d.setPaint(Color.BLUE);
+		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtE);
 		//Dado Direita
 		Rectangle2D rtD=new Rectangle2D.Double(955,555,150,150);
-		g2d.setPaint(Color.BLUE);
+		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
 
 		
@@ -511,9 +515,7 @@ public class Painel extends JPanel
 		MatrizTab[11][11][0] = 488;
 		MatrizTab[11][11][1] = 378;
 		
-		//Exibir Exploradores
-		Paint cor[] = {Color.blue,Color.YELLOW,Color.red, Color.green};
-		
+		//Exibir Exploradores		
 		int cont[] = {0,0,0,0};
 		boolean polo = false, polo1 = false;
 		for (int i=0; i< regras.qnt ; i++)
