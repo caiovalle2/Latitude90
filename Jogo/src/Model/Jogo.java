@@ -3,6 +3,7 @@ import java.util.Random;
 class Jogo{
     Random random = new Random();
     int dado[] = new int[2], pos_metas[][]= {{6,4},{5,3},{4,1},{7,1},{8,2},{9,4},{7,7},{8,8},{9,10},{6,10},{5,9},{4,7}}, modo = 0, carta = 0, polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
+    int qnt;
     Jogador jog[];
     char cor[] = {'A','V','R','L'}, time1[] = {cor[0],cor[1]},time2[] = {cor[2],cor[3]};
     {
@@ -15,6 +16,7 @@ class Jogo{
      
     public Jogo(int modo, int qnt){
         this.modo = modo;
+        this.qnt = qnt;
         jog = new Jogador[qnt];
         
         for(int x =0; x<qnt;x++) {
@@ -33,25 +35,9 @@ class Jogo{
         return dado;
     }
     /*-----------------------------------------//---------------------------------------//------------------------------------------------*/
-    public char dado_colorido(){
-    	int colorido = random.nextInt(6)+1;
-        if(dado[0] == dado[1]){
-            switch(colorido) {
-            case 1:
-            	return 'A';
-            case 2:
-            	return 'V';
-            case 3:
-            	return 'P';
-            case 4:
-            	return 'R';
-            case 5:
-            	return 'L';
-            case 6:
-            	return 'P';
-            }
-        }
-        return 0;
+    public int dado_colorido(){
+    	int colorido = random.nextInt(6);
+        return colorido;
     }
     public int compara_cor( char cor) {/*retorna o indice do jogador que tem a cor*/
     	int indice = 0;
@@ -68,7 +54,7 @@ class Jogo{
     	if(indice == -1) {
     		return;
     	}
-    	if(ind_jog == indice) {/*caso o jogador seja o mesmo do dado colorido*/
+    	if(ind_jog == indice || ind_jog >= qnt) {/*caso o jogador seja o mesmo do dado colorido*/
     		jog[ind_jog].vai_polo_oposto(ind_exp);
     	}
     	else {
