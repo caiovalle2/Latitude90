@@ -54,26 +54,33 @@ public class Painel extends JPanel
 		
 		//Exibir Cor de Jogador 
 		//Dado esquerda
-		Rectangle2D rtE=new Rectangle2D.Double(725,255,150,150);
+		Rectangle2D rtE=new Rectangle2D.Double(725,355,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtE);
 		//Dado Direita
-		Rectangle2D rtD=new Rectangle2D.Double(885,255,150,150);
+		Rectangle2D rtD=new Rectangle2D.Double(885,355,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
 
 		//Exibir dado colorido
-		Rectangle2D dadocor=new Rectangle2D.Double(1055,280,100,100);
+		Rectangle2D dadocor=new Rectangle2D.Double(1055,380,100,100);
 		g2d.setPaint(cor[regras.ind_cor]);
 		g2d.fill(dadocor);
 
 		
+		if(regras.colorido || regras.acaocor) {
+			Frame.info.setText("Dado colorido!");
+		}
+		else if(!regras.ganhou) {
+			Frame.info.setText("");
+		}
+		
 		/*Exibir dados*/
 		
 		num = regras.dados[0] -1;
-		g2d.drawImage(dado.Dado(num),750,280,null);
+		g2d.drawImage(dado.Dado(num),750,380,null);
 		num = regras.dados[1] -1;
-		g2d.drawImage(dado.Dado(num),910,280,null);
+		g2d.drawImage(dado.Dado(num),910,380,null);
 		/*Exibir Tabuleiro*/
 		g2d.drawImage(tab,0,0,null);
 		
