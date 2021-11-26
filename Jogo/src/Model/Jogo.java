@@ -86,9 +86,6 @@ class Jogo{
     }
     int comprar_carta() {
     	boolean fim = false;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     	int contagem = 0;	
     	while(!fim) {
 			carta = random.nextInt(18)+1;
@@ -102,25 +99,6 @@ class Jogo{
 			if(contagem == ind_cartas) {
 				fim = true;
 			}
-=======
->>>>>>> Stashed changes
-	int contagem = 0;	
-	while(!fim) {
-		carta = random.nextInt(18)+1;
-		for(int c: cartas_compradas) {
-			if(carta == c) {
-				contagem = 0;
-				break;
-			}
-			contagem++;
-		}
-		if(contagem == ind_cartas) {
-			fim = true;
-		}
-<<<<<<< Updated upstream
-=======
->>>>>>> e7eb8aac8eca7fe877782abb77d694ce4d424afa
->>>>>>> Stashed changes
     	}
     	cartas_compradas[ind_cartas] = carta;
     	ind_cartas += 1;
