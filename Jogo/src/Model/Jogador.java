@@ -61,7 +61,7 @@ class Jogador{
 
     }
     void vai_polo_oposto(int ind) {
-    	setposicao(ind, polo_oposto[1],polo_oposto[0]);
+    	setposicao(ind, -1,polo_oposto[0]);
 
     }
 }
