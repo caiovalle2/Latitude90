@@ -72,7 +72,7 @@ public class Painel extends JPanel
 			Frame.info.setText("Dado colorido!");
 		}
 		else if(!regras.ganhou) {
-			Frame.info.setText("");
+			Frame.info.setText("Informação do Jogo!");
 		}
 		
 		/*Exibir dados*/
