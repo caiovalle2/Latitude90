@@ -15,7 +15,7 @@ public class Frame extends JFrame {
 		dados.addActionListener(new Jogardados(regras,this));
 		add(dados);
 		
-		info.setBounds(900,190,200,50);
+		info.setBounds(850,190,200,50);
 		info.setFont(new Font("Arial",Font.BOLD,20));
 		add(info);
 		
