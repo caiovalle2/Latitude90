@@ -13,7 +13,6 @@ public class Jogardados implements  ActionListener{
 	Dados imgdados;
 	Frame f;
 	int soma[] = {0,0,0,0}, i = 0;
-	static boolean estado = true,colorido = false,acaocor = false;
 	public Jogardados(Regras regras, Frame f) {
 		this.regras = regras;
 		this.f = f;
@@ -21,10 +20,10 @@ public class Jogardados implements  ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		int dados[] = {0,0};
 		
-		if(colorido) {
+		if(regras.colorido) {
 			regras.dadocolorido();
-			colorido = false;
-			acaocor = true;
+			regras.colorido = false;
+			regras.acaocor = true;
 		}
 		else {
 			
@@ -57,16 +56,16 @@ public class Jogardados implements  ActionListener{
 				}
 				
 			}
-			else if(estado) {
+			else if(regras.estado) {
 				
 				dados = regras.jogardado();
 				/*Exibir os dados*/
-				estado = false;
+				regras.estado = false;
 				regras.iniciar = true;
 			}
 			
 			if(regras.dados[0] == regras.dados[1] && regras.iniciar) {
-				colorido = true;
+				regras.colorido = true;
 				regras.iniciar = false;
 				
 			}
