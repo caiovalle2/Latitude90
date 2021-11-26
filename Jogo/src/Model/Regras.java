@@ -1,8 +1,8 @@
 package Model;
 
 public class Regras {
-	public int modo, qnt, dados[] = {1,1}, ind =0, indice[] = {0,1,2,3}, i = 0;
-	public boolean ord_ind = false;
+	public int modo, qnt, dados[] = {1,1},ind_cor = 5, ind =0, indice[] = {0,1,2,3}, i = 0 ;
+	public boolean ord_ind = false, iniciar = false;
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
@@ -15,14 +15,13 @@ public class Regras {
 		dados = novo.jogardado();
 		return dados;
 	}
-	public char dadocolorido() {/*joga o dado colorido e retorna a cor*/
-		char cor = novo.dado_colorido();
+	public int dadocolorido() {/*joga o dado colorido e retorna a cor*/
+		 ind_cor = novo.dado_colorido();
 		
-		return cor;
+		return ind_cor;
 	}
-	public void acao_dado_colorido(int ind_jog, char cor, int ind_exp) {/*faz a acao do dado colorido*/
-		int indice = novo.compara_cor(cor);
-		novo.acao_dado_colorido(ind_jog, indice, ind_exp);
+	public void acao_dado_colorido(int ind_jog, int cor, int ind_exp) {/*faz a acao do dado colorido*/
+		novo.acao_dado_colorido(ind_jog, cor, ind_exp);
 	}
 	public int rodada() {
 		ind = ind%qnt;
