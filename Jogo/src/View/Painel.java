@@ -32,7 +32,7 @@ public class Painel extends JPanel
     
     int metas[][][] = {metaverde,metaamarelo,metapreto,metaazul};
     
-	Paint cor[] = {Color.green,Color.YELLOW,Color.black, Color.blue};
+	Paint cor[] = {Color.green,Color.YELLOW,Color.white, Color.blue,Color.black,Color.black};
 
     int cont[] = {0,0,0,0};
     
@@ -54,21 +54,25 @@ public class Painel extends JPanel
 		
 		//Exibir Cor de Jogador 
 		//Dado esquerda
-		Rectangle2D rtE=new Rectangle2D.Double(795,555,150,150);
+		Rectangle2D rtE=new Rectangle2D.Double(725,255,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtE);
 		//Dado Direita
-		Rectangle2D rtD=new Rectangle2D.Double(955,555,150,150);
+		Rectangle2D rtD=new Rectangle2D.Double(885,255,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
+
+		Rectangle2D dadocor=new Rectangle2D.Double(1055,280,100,100);
+		g2d.setPaint(cor[regras.ind_cor]);
+		g2d.fill(dadocor);
 
 		
 		/*Exibir dados*/
 		
 		num = regras.dados[0] -1;
-		g2d.drawImage(dado.Dado(num),820,580,null);
+		g2d.drawImage(dado.Dado(num),750,280,null);
 		num = regras.dados[1] -1;
-		g2d.drawImage(dado.Dado(num),980,580,null);
+		g2d.drawImage(dado.Dado(num),910,280,null);
 		/*Exibir Tabuleiro*/
 		g2d.drawImage(tab,0,0,null);
 		
