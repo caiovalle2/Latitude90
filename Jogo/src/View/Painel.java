@@ -62,6 +62,7 @@ public class Painel extends JPanel
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
 
+		//Exibir dado colorido
 		Rectangle2D dadocor=new Rectangle2D.Double(1055,280,100,100);
 		g2d.setPaint(cor[regras.ind_cor]);
 		g2d.fill(dadocor);
@@ -520,7 +521,7 @@ public class Painel extends JPanel
 		MatrizTab[11][11][1] = 378;
 		
 		//Exibir Exploradores		
-		int cont[] = {0,0,0,0};
+		int cont[] = {0,0,0,0}, num_exp;
 		boolean polo = false, polo1 = false;
 		for (int i=0; i< regras.qnt ; i++)
 	   {
@@ -533,7 +534,26 @@ public class Painel extends JPanel
 	    	  g2d.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		   	  g2d.setPaint(cor[i]);
 	    	  if(lat != 13 && lat != 0) {
-			   	  g2d.fillOval(MatrizTab[lat-1][lon][0], MatrizTab[lat-1][lon][1], 10, 10);
+	    		  num_exp = regras.ver_posicao(i, lon, lat)[1];
+	    		  /*Exibe os exploradores conforme o numero em cada casa*/
+	    		  if(num_exp < 3) {
+	    			  for(int x = 0; x < num_exp; x++) {
+	    				  g2d.fillOval(MatrizTab[lat-1][lon][0] - 10*x, MatrizTab[lat-1][lon][1] - 10*x, 10, 10);
+	    			  }
+	    		  }
+	    		  else if(num_exp >= 3) {
+	    			  
+	    			  g2d.fillOval(MatrizTab[lat-1][lon][0], MatrizTab[lat-1][lon][1], 15, 15);
+	    			  
+	    			  num_exp -= 3;
+	    			  for(int x = 1; x <= num_exp; x++) {
+	    				  g2d.fillOval(MatrizTab[lat-1][lon][0] - 10*x, MatrizTab[lat-1][lon][1] - 10*x, 10, 10);
+	    			  }
+	    		  }
+	    		  else if( num_exp == 6) {
+	    			  g2d.fillOval(MatrizTab[lat-1][lon][0], MatrizTab[lat-1][lon][1], 15, 15);
+	    			  g2d.fillOval(MatrizTab[lat-1][lon][0] - 15, MatrizTab[lat-1][lon][1] - 15, 15, 15);
+	    		  }
 
 	    	  }
 	    	  else if( i == regras.rodada() && lon != -1) {
