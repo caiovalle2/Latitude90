@@ -2,7 +2,7 @@ package Model;
 
 public class Regras {
 	public int modo, qnt, dados[] = {1,1},ind_cor = 5, ind =0, indice[] = {0,1,2,3}, i = 0 ;
-	public boolean ord_ind = false, iniciar = false;
+	public boolean ord_ind = false, iniciar = false,estado = true,colorido = false,acaocor = false, ganhou = false;
 	Jogo novo;
 	public Regras(int modo, int qnt) {
 		this.modo = modo;
