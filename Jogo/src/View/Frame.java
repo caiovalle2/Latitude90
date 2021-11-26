@@ -11,7 +11,7 @@ public class Frame extends JFrame {
 	
 	public Frame(Regras regras) {
 		JButton dados = new JButton("Jogar Dados");
-		dados.setBounds(850,500,200,50);
+		dados.setBounds(850,200,200,50);
 		dados.addActionListener(new Jogardados(regras,this));
 		add(dados);
 		Toolkit tk=Toolkit.getDefaultToolkit();
