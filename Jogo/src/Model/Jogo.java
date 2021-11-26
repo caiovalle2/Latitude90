@@ -84,12 +84,21 @@ class Jogo{
     boolean ver_time(char time[], char a, char b) {/*verifica se o a e b estão no mesmo time*/
     	return (a == time[0] || a == time[1]) && (b == time[0] || b == time[1]) ;
     }
-	int comprar_carta() {
-    	carta = random.nextInt(18)+1;
-    	for(int c: cartas_compradas) {
-    		while(c == carta) {
-    			carta = random.nextInt(18)+1;
-    		}
+    int comprar_carta() {
+    	boolean fim = false;
+	int contagem = 0;	
+	while(!fim) {
+		carta = random.nextInt(18)+1;
+		for(int c: cartas_compradas) {
+			if(carta == c) {
+				contagem = 0;
+				break;
+			}
+			contagem++;
+		}
+		if(contagem == ind_cartas) {
+			fim = true;
+		}
     	}
     	cartas_compradas[ind_cartas] = carta;
     	ind_cartas += 1;
