@@ -13,7 +13,7 @@ public class Jogardados implements  ActionListener{
 	Dados imgdados;
 	Frame f;
 	int soma[] = {0,0,0,0}, i = 0;
-	static boolean estado = true;
+	static boolean estado = true,colorido = false,acaocor = false;
 	public Jogardados(Regras regras, Frame f) {
 		this.regras = regras;
 		this.f = f;
@@ -21,44 +21,55 @@ public class Jogardados implements  ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		int dados[] = {0,0};
 		
-		if(!regras.ord_ind) {
-			regras.jogardado();
-			soma[i] = regras.dados[0] + regras.dados[1];
-			i++;
-			if(i == regras.qnt) {
-				for(int x = 0; x < i; x++) {
-					int n = 0;
-					int val = 0, val2 = 0;
-					for(int y = 0; y < i - x - 1; y++) {
-						if(soma[y] < soma[y+1]) {
-							n = y;
+		if(colorido) {
+			regras.dadocolorido();
+			colorido = false;
+			acaocor = true;
+		}
+		else {
+			
+		
+			if(!regras.ord_ind) {
+				regras.jogardado();
+				soma[i] = regras.dados[0] + regras.dados[1];
+				i++;
+				if(i == regras.qnt) {
+					for(int x = 0; x < i; x++) {
+						int n = 0;
+						int val = 0, val2 = 0;
+						for(int y = 0; y < i - x - 1; y++) {
+							if(soma[y] < soma[y+1]) {
+								n = y;
+							}
+							else {
+								n = y+1;
+							}
 						}
-						else {
-							n = y+1;
-						}
+						val = soma[i-x-1];
+						soma[i-x-1] = soma[n];
+						soma[n] = val;
+						val2 = regras.indice[i-x-1];
+						regras.indice[i-x-1] = regras.indice[n];
+						regras.indice[n] = val2;
 					}
-					val = soma[i-x-1];
-					soma[i-x-1] = soma[n];
-					soma[n] = val;
-					val2 = regras.indice[i-x-1];
-					regras.indice[i-x-1] = regras.indice[n];
-					regras.indice[n] = val2;
+					regras.ord_ind = true;
+					System.out.println(i + " "+ regras.indice[0] + " " + regras.indice[1]);
 				}
-				regras.ord_ind = true;
-				System.out.println(i + " "+ regras.indice[0] + " " + regras.indice[1]);
+				
+			}
+			else if(estado) {
+				
+				dados = regras.jogardado();
+				/*Exibir os dados*/
+				estado = false;
+				regras.iniciar = true;
 			}
 			
-		}
-		else if(estado) {
-			
-			dados = regras.jogardado();
-			/*Exibir os dados*/
-			estado = false;
-		}
-		
-		if(dados[0] == dados[1]) {
-			char colorido = regras.dadocolorido();
-			
+			if(regras.dados[0] == regras.dados[1] && regras.iniciar) {
+				colorido = true;
+				regras.iniciar = false;
+				
+			}
 		}
 		f.repaint();
 		
