@@ -16,6 +16,10 @@ public class EventMov implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX(), y = e.getY();
 		int pos[] = {0,0};
+		
+		if(x > 720 || regras.ganhou) {
+			return;
+		}
 		System.out.println("-----------------------------------------------");
 		Coordenadas(x,y);
 		ind_jog = regras.indice[regras.ind];
@@ -24,11 +28,10 @@ public class EventMov implements MouseListener{
 		System.out.println("posicao: " + pos[1]);
 		
 		/*acao do dado colorido*/
-		
-		if(Jogardados.acaocor ) {
+		if(regras.acaocor ) {
 			int exp = -1, ind_jog2 = regras.ind_cor;
 			if(regras.ind_cor > 3) {
-				Jogardados.acaocor = false;
+				regras.acaocor = false;
 			}
 			else if(regras.ind_cor < regras.qnt) {
 				exp = regras.get_explorador(regras.ind_cor, longitude, latitude);
@@ -39,16 +42,17 @@ public class EventMov implements MouseListener{
 			}
 			if(exp != -1) {
 				regras.acao_dado_colorido(ind_jog, ind_jog2, exp);
-				Jogardados.acaocor = false;
+				regras.acaocor = false;
 			}
 			f.repaint();
 			return;
 		}
-		else if(Jogardados.colorido) {
+		else if(regras.colorido) {
 			return;
 		}
+		
 		/*movimento do jogador com dado*/
-		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador && !Jogardados.estado) {
+		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador && !regras.estado) {
 			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
 			lat = latitude;
 			lon = longitude;
@@ -127,7 +131,29 @@ public class EventMov implements MouseListener{
 			
 			if(regras.ganhou(ind_jog)) {
 				System.out.println("Ganhou");
-				regras.ver_ganhador();
+				regras.ganhou = true;
+				char a = regras.ver_ganhador();
+				System.out.println("ganhou!");
+				switch(a) {
+				case 'G':
+					Frame.info.setText("Jogador Verde ganhou!");
+					break;
+				case 'Y':
+					Frame.info.setText("Jogador Amarelo ganhou!");
+					break;
+				case 'W':
+					Frame.info.setText("Jogador branco ganhou!");
+					break;
+				case 'B':
+					Frame.info.setText("Jogador azul ganhou!");
+					break;
+				case '1':
+					Frame.info.setText("Dupla Verde e amarelo ganhou!");
+					break;
+				case '2':
+					Frame.info.setText("Dupla branco e azul ganhou!");
+					break;
+				}
 			}
 			f.repaint();
 			 
@@ -137,7 +163,7 @@ public class EventMov implements MouseListener{
 			dados[1] = true;
 			explorador = false;
 			System.out.println("Proxima rodada");
-			Jogardados.estado = true;
+			regras.estado = true;
 			regras.ind++;
 		}
 		
