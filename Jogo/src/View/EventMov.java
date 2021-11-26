@@ -23,6 +23,31 @@ public class EventMov implements MouseListener{
 		 
 		System.out.println("posicao: " + pos[1]);
 		
+		/*acao do dado colorido*/
+		
+		if(Jogardados.acaocor ) {
+			int exp = -1, ind_jog2 = regras.ind_cor;
+			if(regras.ind_cor > 3) {
+				Jogardados.acaocor = false;
+			}
+			else if(regras.ind_cor < regras.qnt) {
+				exp = regras.get_explorador(regras.ind_cor, longitude, latitude);
+			}
+			else {
+				ind_jog2 = ind_jog;
+				exp = regras.get_explorador(ind_jog2, longitude, latitude);
+			}
+			if(exp != -1) {
+				regras.acao_dado_colorido(ind_jog, ind_jog2, exp);
+				Jogardados.acaocor = false;
+			}
+			f.repaint();
+			return;
+		}
+		else if(Jogardados.colorido) {
+			return;
+		}
+		/*movimento do jogador com dado*/
 		if(regras.get_explorador(ind_jog,longitude,latitude) != -1  && !explorador && !Jogardados.estado) {
 			ind_exp = regras.get_explorador(ind_jog,longitude,latitude);
 			lat = latitude;
@@ -69,11 +94,9 @@ public class EventMov implements MouseListener{
 					mov = 0;
 					explorador = false;
 					
-					System.out.println("Posicao pos movimento "+ regras.getposicao(ind_jog, ind_exp)[0] + " " + regras.getposicao(ind_jog, ind_exp)[1] );
 					System.out.println("Executando movimento 1 !!");
 				}
 				else if(polo) {
-					System.out.println("ERRO");
 					regras.set_posicao(ind_jog, ind_exp, regras.getposicao(ind_jog, ind_exp)[1], 0);
 					polo = false;
 				}
@@ -90,7 +113,6 @@ public class EventMov implements MouseListener{
 					explorador = false;
 					dados[1] = false;
 					mov = 0;
-					System.out.println("Posicao pos movimento "+ regras.getposicao(ind_jog, ind_exp)[0] + " " + regras.getposicao(ind_jog, ind_exp)[1] );
 					System.out.println("Executando movimento 2!!");
 				}
 				else if(polo) {
@@ -105,6 +127,7 @@ public class EventMov implements MouseListener{
 			
 			if(regras.ganhou(ind_jog)) {
 				System.out.println("Ganhou");
+				regras.ver_ganhador();
 			}
 			f.repaint();
 			 
