@@ -5,7 +5,7 @@ class Jogo{
     int dado[] = new int[2], pos_metas[][]= {{6,4},{5,3},{4,1},{7,1},{8,2},{9,4},{7,7},{8,8},{9,10},{6,10},{5,9},{4,7}}, modo = 0, carta = 0, polo[]= new int[2], polo_oposto[] = new int[2], cartas_compradas[] = new int[12], ind_cartas = 0;
     int qnt;
     Jogador jog[];
-    char cor[] = {'A','V','R','L'}, time1[] = {cor[0],cor[1]},time2[] = {cor[2],cor[3]};
+    char cor[] = {'G','Y','W','B'}, time1[] = {cor[0],cor[1]},time2[] = {cor[2],cor[3]};
     {
         polo[0] = 0;
         polo[1] = 0;
@@ -86,6 +86,24 @@ class Jogo{
     }
     int comprar_carta() {
     	boolean fim = false;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    	int contagem = 0;	
+    	while(!fim) {
+			carta = random.nextInt(18)+1;
+			for(int c: cartas_compradas) {
+				if(carta == c) {
+					contagem = 0;
+					break;
+				}
+				contagem++;
+			}
+			if(contagem == ind_cartas) {
+				fim = true;
+			}
+=======
+>>>>>>> Stashed changes
 	int contagem = 0;	
 	while(!fim) {
 		carta = random.nextInt(18)+1;
@@ -99,6 +117,10 @@ class Jogo{
 		if(contagem == ind_cartas) {
 			fim = true;
 		}
+<<<<<<< Updated upstream
+=======
+>>>>>>> e7eb8aac8eca7fe877782abb77d694ce4d424afa
+>>>>>>> Stashed changes
     	}
     	cartas_compradas[ind_cartas] = carta;
     	ind_cartas += 1;
@@ -227,7 +249,7 @@ class Jogo{
     public char ver_ganhador() {
     	int pontos = 0, pontos2 = 0;
     	char jog_cor = 0;
-    	if(modo == 0) {
+    	if(modo == 0 || modo == 1) {
     		for(Jogador j: jog) {
     			if(j.getpontos()> pontos ) {
     				jog_cor = j.getcor();
