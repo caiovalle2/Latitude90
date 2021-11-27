@@ -8,16 +8,11 @@ public class Frame extends JFrame {
 	public final int LARG_DEFAULT=1200;
 	public final int ALT_DEFAULT=750;
 	JPanel p;
-	static JLabel info = new JLabel("Inicio de jogo");
 	public Frame(Regras regras) {
 		JButton dados = new JButton("Jogar Dados");
 		dados.setBounds(850,300,200,50);
 		dados.addActionListener(new Jogardados(regras,this));
 		add(dados);
-		
-		info.setBounds(850,190,200,50);
-		info.setFont(new Font("Arial",Font.BOLD,20));
-		add(info);
 		
 		String dado[] = {"1","2","3","4","5","6"};
 		JButton simular = new JButton("Simular");
