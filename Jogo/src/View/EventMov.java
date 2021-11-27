@@ -132,28 +132,6 @@ public class EventMov implements MouseListener{
 			if(regras.ganhou(ind_jog)) {
 				System.out.println("Ganhou");
 				regras.ganhou = true;
-				char a = regras.ver_ganhador();
-				System.out.println("ganhou!");
-				switch(a) {
-				case 'G':
-					Frame.info.setText("Jogador Verde ganhou!");
-					break;
-				case 'Y':
-					Frame.info.setText("Jogador Amarelo ganhou!");
-					break;
-				case 'W':
-					Frame.info.setText("Jogador branco ganhou!");
-					break;
-				case 'B':
-					Frame.info.setText("Jogador azul ganhou!");
-					break;
-				case '1':
-					Frame.info.setText("Dupla Verde e amarelo ganhou!");
-					break;
-				case '2':
-					Frame.info.setText("Dupla branco e azul ganhou!");
-					break;
-				}
 			}
 			f.repaint();
 			 
