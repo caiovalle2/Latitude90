@@ -15,6 +15,10 @@ public class Regras {
 		dados = novo.jogardado();
 		return dados;
 	}
+	public void set_dados(int a, int b) {
+		dados[0] = a;
+		dados[1] = b;
+	}
 	public int dadocolorido() {/*joga o dado colorido e retorna a cor*/
 		 ind_cor = novo.dado_colorido();
 		
