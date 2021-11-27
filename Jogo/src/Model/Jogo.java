@@ -84,7 +84,7 @@ class Jogo{
     boolean ver_time(char time[], char a, char b) {/*verifica se o a e b estão no mesmo time*/
     	return (a == time[0] || a == time[1]) && (b == time[0] || b == time[1]) ;
     }
-    int comprar_carta() {
+    public int comprar_carta() {
     	boolean fim = false;
     	int contagem = 0;	
     	while(!fim) {
