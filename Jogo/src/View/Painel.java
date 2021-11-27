@@ -66,13 +66,43 @@ public class Painel extends JPanel
 		Rectangle2D dadocor=new Rectangle2D.Double(1055,380,100,100);
 		g2d.setPaint(cor[regras.ind_cor]);
 		g2d.fill(dadocor);
-
 		
-		if(regras.colorido || regras.acaocor) {
-			Frame.info.setText("Dado colorido!");
+		// Textos do jogo
+		g2d.setPaint(Color.black);
+		g2d.setFont(new Font("Arial",Font.BOLD,20));
+		int msg_x = 855, msg_y = 290;
+		if(regras.ganhou) {
+			char a = regras.ver_ganhador();
+			switch(a) {
+			case 'G':
+				g2d.drawString("Jogador Verde ganhou!", msg_x, msg_y);
+				break;
+			case 'Y':
+				g2d.drawString("Jogador Amarelo ganhou!", msg_x, msg_y);
+				break;
+			case 'W':
+				g2d.drawString("Jogador Branco ganhou!", msg_x, msg_y);
+				break;
+			case 'B':
+				g2d.drawString("Jogador Azul ganhou!", msg_x, msg_y);
+				break;
+			case '1':
+				g2d.drawString("Dupla Verde e amarelo ganhou!", msg_x, msg_y);
+				break;
+			case '2':
+				g2d.drawString("Dupla Branco e azul ganhou!", msg_x, msg_y);
+				break;
+			}
+
 		}
-		else if(!regras.ganhou) {
-			Frame.info.setText("Informação do Jogo!");
+		else if(regras.colorido || regras.acaocor) {
+			g.drawString("Dado Colorido!", msg_x, msg_y);
+		}
+		else if(!regras.ord_ind) {
+			g.drawString("Definindo a ordem dos jogadores!", msg_x - 50, msg_y);
+		}
+		else {
+			g.drawString("Informação do jogo!", msg_x, msg_y);
 		}
 		
 		/*Exibir dados*/
