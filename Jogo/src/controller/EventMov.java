@@ -30,16 +30,13 @@ public class EventMov implements MouseListener{
 		/*acao do dado colorido*/
 		if(regras.acaocor ) {
 			int exp = -1, ind_jog2 = regras.ind_cor;
-			if(regras.ind_cor > 3) {
+			if(regras.ind_cor >= regras.qnt) {
 				regras.acaocor = false;
 			}
-			else if(regras.ind_cor < regras.qnt) {
+			else {
 				exp = regras.get_explorador(regras.ind_cor, longitude, latitude);
 			}
-			else {
-				ind_jog2 = ind_jog;
-				exp = regras.get_explorador(ind_jog2, longitude, latitude);
-			}
+			
 			if(exp != -1) {
 				regras.acao_dado_colorido(ind_jog, ind_jog2, exp);
 				regras.acaocor = false;
