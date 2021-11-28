@@ -1,7 +1,7 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
-
+import controller.*;
 public class TelaInicial extends JFrame{
 	public final int LARG_DEFAULT=800;
 	public final int ALT_DEFAULT=400;
