@@ -54,23 +54,23 @@ public class Painel extends JPanel
 		
 		//Exibir Cor de Jogador 
 		//Dado esquerda
-		Rectangle2D rtE=new Rectangle2D.Double(725,355,150,150);
+		Rectangle2D rtE=new Rectangle2D.Double(725,405,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtE);
 		//Dado Direita
-		Rectangle2D rtD=new Rectangle2D.Double(885,355,150,150);
+		Rectangle2D rtD=new Rectangle2D.Double(885,405,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
 
 		//Exibir dado colorido
-		Rectangle2D dadocor=new Rectangle2D.Double(1055,380,100,100);
+		Rectangle2D dadocor=new Rectangle2D.Double(1055,430,100,100);
 		g2d.setPaint(cor[regras.ind_cor]);
 		g2d.fill(dadocor);
 		
 		// Textos do jogo
 		g2d.setPaint(Color.black);
 		g2d.setFont(new Font("Arial",Font.BOLD,20));
-		int msg_x = 855, msg_y = 290;
+		int msg_x = 855, msg_y = 330;
 		if(regras.ganhou) {
 			char a = regras.ver_ganhador();
 			switch(a) {
@@ -108,9 +108,9 @@ public class Painel extends JPanel
 		/*Exibir dados*/
 		
 		num = regras.dados[0] -1;
-		g2d.drawImage(dado.Dado(num),750,380,null);
+		g2d.drawImage(dado.Dado(num),750,430,null);
 		num = regras.dados[1] -1;
-		g2d.drawImage(dado.Dado(num),910,380,null);
+		g2d.drawImage(dado.Dado(num),910,430,null);
 		/*Exibir Tabuleiro*/
 		g2d.drawImage(tab,0,0,null);
 		
