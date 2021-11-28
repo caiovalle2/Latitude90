@@ -34,7 +34,7 @@ public class Frame extends JFrame {
 		menu.add(salvar);
 		mb.add(menu);
 		novo.addActionListener(new NovoJogo(this));			
-		salvar.addActionListener(new Salvar(regras));
+		salvar.addActionListener(new Salvar(this, regras));
 		setJMenuBar(mb);
 		
 		Toolkit tk=Toolkit.getDefaultToolkit();
