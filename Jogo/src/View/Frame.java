@@ -11,7 +11,7 @@ public class Frame extends JFrame {
 	JPanel p;
 	public Frame(Regras regras) {
 		JButton dados = new JButton("Jogar Dados");
-		dados.setBounds(850,460,200,50);
+		dados.setBounds(850,340,200,50);
 		dados.addActionListener(new JogarDados(regras,this));
 		add(dados);
 		
@@ -19,9 +19,9 @@ public class Frame extends JFrame {
 		JButton simular = new JButton("Simular");
 		JComboBox dado1 = new JComboBox(dado);
 		JComboBox dado2 = new JComboBox(dado);
-		dado1.setBounds(750,665,110,20);
-		dado2.setBounds(900,665,110,20);
-		simular.setBounds(1050,665,110,20);
+		dado1.setBounds(750,555,110,20);
+		dado2.setBounds(900,555,110,20);
+		simular.setBounds(1050,555,110,20);
 		simular.addActionListener(new SimularDados(this,regras, dado1, dado2));
 		add(dado1);
 		add(dado2);
