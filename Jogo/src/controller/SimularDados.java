@@ -7,7 +7,7 @@ public class SimularDados implements ActionListener {
 	Frame f;
 	Regras regras;
 	JComboBox dado1, dado2;
-	int soma[] = {0,0,0,0}, i = 0;
+	int soma[] = {0,0,0,0};
 	public SimularDados(Frame f,Regras regras, JComboBox d1, JComboBox d2){
 		this.f = f;
 		this.regras = regras;
@@ -23,14 +23,14 @@ public class SimularDados implements ActionListener {
 		}
 		else {
 			if(!regras.ord_ind) {
-				regras.set_dados(dado1.getSelectedIndex()+1,dado2.getSelectedIndex()+1);
-				soma[i] = regras.dados[0] + regras.dados[1];
-				i++;
-				if(i == regras.qnt) {
-					for(int x = 0; x < i; x++) {
+				regras.jogardado();
+				soma[regras.i] = regras.dados[0] + regras.dados[1];
+				regras.i++;
+				if(regras.i == regras.qnt) {
+					for(int x = 0; x < regras.i; x++) {
 						int n = 0;
 						int val = 0, val2 = 0;
-						for(int y = 0; y < i - x - 1; y++) {
+						for(int y = 0; y < regras.i - x - 1; y++) {
 							if(soma[y] < soma[y+1]) {
 								n = y;
 							}
@@ -38,16 +38,17 @@ public class SimularDados implements ActionListener {
 								n = y+1;
 							}
 						}
-						val = soma[i-x-1];
-						soma[i-x-1] = soma[n];
+						val = soma[regras.i-x-1];
+						soma[regras.i-x-1] = soma[n];
 						soma[n] = val;
-						val2 = regras.indice[i-x-1];
-						regras.indice[i-x-1] = regras.indice[n];
+						val2 = regras.indice[regras.i-x-1];
+						regras.indice[regras.i-x-1] = regras.indice[n];
 						regras.indice[n] = val2;
 					}
 					regras.ord_ind = true;
-					System.out.println(i + " "+ regras.indice[0] + " " + regras.indice[1]);
+					System.out.println(regras.i + " "+ regras.indice[0] + " " + regras.indice[1]);
 				}
+			
 			}
 			else if(regras.estado) {
 				regras.set_dados(dado1.getSelectedIndex()+1,dado2.getSelectedIndex()+1);
