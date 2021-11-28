@@ -23,7 +23,7 @@ public class SimularDados implements ActionListener {
 		}
 		else {
 			if(!regras.ord_ind) {
-				regras.jogardado();
+				regras.set_dados(dado1.getSelectedIndex()+1,dado2.getSelectedIndex()+1);
 				soma[regras.i] = regras.dados[0] + regras.dados[1];
 				regras.i++;
 				if(regras.i == regras.qnt) {
