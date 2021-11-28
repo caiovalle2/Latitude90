@@ -122,8 +122,8 @@ class Jogo{
     		if(meta) {/*adiciona a meta ao jogador e soma os pontos*/
     			jog[ind_jog].addmeta();
     			jog[ind_jog].somarpontos(1);
-				int c = comprar_carta();
-    			jog[ind_jog].addcarta(c);
+				//int c = comprar_carta();
+    			//jog[ind_jog].addcarta(c);
     			System.out.println("Ganhou uma meta!");
 
     		}
