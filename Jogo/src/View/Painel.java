@@ -14,6 +14,7 @@ public class Painel extends JPanel
 	Image tab;
 	Dados dado = new Dados();
 	Regras regras;
+	Cartas carta = new Cartas();
 	Image circ;
 	public static int Latitude=12;
 	public static int Longitude=12;
@@ -54,23 +55,51 @@ public class Painel extends JPanel
 		
 		//Exibir Cor de Jogador 
 		//Dado esquerda
-		Rectangle2D rtE=new Rectangle2D.Double(725,405,150,150);
+		Rectangle2D rtE=new Rectangle2D.Double(725,510,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtE);
 		//Dado Direita
-		Rectangle2D rtD=new Rectangle2D.Double(885,405,150,150);
+		Rectangle2D rtD=new Rectangle2D.Double(885,510,150,150);
 		g2d.setPaint(cor[regras.rodada()]);
 		g2d.fill(rtD);
 
 		//Exibir dado colorido
-		Rectangle2D dadocor=new Rectangle2D.Double(1055,430,100,100);
+		Rectangle2D dadocor=new Rectangle2D.Double(1055,535,100,100);
 		g2d.setPaint(cor[regras.ind_cor]);
 		g2d.fill(dadocor);
 		
+		//Exibir layout das cartas
+		Rectangle2D rtJ1=new Rectangle2D.Double(967,5,200,200);
+		g2d.setPaint(cor[3]);
+		g2d.fill(rtJ1);
+		
+		Rectangle2D rtJ2=new Rectangle2D.Double(967,205,200,200);
+		g2d.setPaint(cor[1]);
+		g2d.fill(rtJ2);
+		
+		Rectangle2D rtJ3=new Rectangle2D.Double(737,5,200,200);
+		g2d.setPaint(cor[2]);
+		g2d.fill(rtJ3);
+		
+		Rectangle2D rtJ4=new Rectangle2D.Double(737,205,200,200);
+		g2d.setPaint(cor[0]);
+		g2d.fill(rtJ4);
+		//Exibir Cartas
+		g2d.drawImage(carta.Cartas(5),980,20,null);
+		g2d.drawImage(carta.Cartas(8),980,220,null);
+		g2d.drawImage(carta.Cartas(10),750,20,null);
+		g2d.drawImage(carta.Cartas(13),750,220,null);
+
+		
+		//Caixa de texto
+		Rectangle2D textBox=new Rectangle2D.Double(745, 410, 420, 45);
+		g2d.setPaint(Color.LIGHT_GRAY);
+		g2d.fill(textBox);
+		
 		// Textos do jogo
-		g2d.setPaint(Color.black);
+		g2d.setPaint(Color.BLACK);
 		g2d.setFont(new Font("Arial",Font.BOLD,20));
-		int msg_x = 855, msg_y = 330;
+		int msg_x = 855, msg_y = 440;
 		if(regras.ganhou) {
 			char a = regras.ver_ganhador();
 			switch(a) {
@@ -108,9 +137,9 @@ public class Painel extends JPanel
 		/*Exibir dados*/
 		
 		num = regras.dados[0] -1;
-		g2d.drawImage(dado.Dado(num),750,430,null);
+		g2d.drawImage(dado.Dado(num),750,535,null);
 		num = regras.dados[1] -1;
-		g2d.drawImage(dado.Dado(num),910,430,null);
+		g2d.drawImage(dado.Dado(num),910,535,null);
 		/*Exibir Tabuleiro*/
 		g2d.drawImage(tab,0,0,null);
 		
