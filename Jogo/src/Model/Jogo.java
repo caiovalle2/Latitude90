@@ -212,8 +212,17 @@ class Jogo{
     	jog[ind_jog].setposicao(ind_exp, j, i);
     }
     
+    int get_pontos(int ind_jog) {
+    	return jog[ind_jog].pontos;
+    }
+    void set_pontos(int ind_jog, int pontos) {
+    	jog[ind_jog].pontos = pontos;
+    }
     int metas(int ind_jog) {
     	return jog[ind_jog].metas;
+    }
+    void set_metas(int ind_jog, int metas) {
+    	jog[ind_jog].metas = metas;
     }
     public boolean ganhou(int ind){
     	int res =0;
