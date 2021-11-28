@@ -44,8 +44,17 @@ public class Regras {
 	public void set_posicao(int ind_jog, int ind_exp, int i, int j) {
 		novo.set_posicao(ind_jog, ind_exp, i, j);
 	}
+	public int get_pontos(int ind_jog) {
+		return novo.get_pontos(ind_jog);
+	}
+	public void set_pontos(int ind_jog, int pontos) {
+		novo.set_pontos(ind_jog, pontos);
+	}
 	public int metas(int ind_jog) {
 		return novo.metas(ind_jog);
+	}
+	public void set_metas(int ind_jog, int metas) {
+		novo.set_metas(ind_jog, metas);
 	}
 	public int movimentar(int ind_jog, int ind_exp, int dado, int sentido) {/*movimenta se possível o explorador no sentido escolhido*/
 		return novo.movimentar(ind_jog, ind_exp, dado, sentido);
