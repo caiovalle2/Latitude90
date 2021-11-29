@@ -3,7 +3,7 @@ package Model;
 
 class Jogador{
     int exploradores[][] = new int[6][2], pontos =0, metas = 0, status_exp[] = {0,0,0,0,0,0}, polo[] = new int[2], polo_oposto[] = new int[2], ind_cartas = 0;
-    private int cartas[] = new int[10];
+    private int cartas[] = new int[2];
     char cor ;
     
     public Jogador(int polo[],int polo_oposto[], char cor){
