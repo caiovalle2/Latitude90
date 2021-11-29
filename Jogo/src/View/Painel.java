@@ -79,8 +79,8 @@ public class Painel extends JPanel
 		
 		
 		//Exibir Cartas
-		g2d.drawImage(carta.Cartas(5),980,20,null);
-		g2d.drawImage(carta.Cartas(8),750,20,null);;
+		g2d.drawImage(carta.Cartas(4),980,20,null);
+		g2d.drawImage(carta.Cartas(7),750,20,null);;
 
 		
 		//Caixa de texto
@@ -125,6 +125,7 @@ public class Painel extends JPanel
 		else {
 			g.drawString("Informação do jogo!", msg_x, msg_y);
 		}
+		
 		
 		/*Exibir dados*/
 		
