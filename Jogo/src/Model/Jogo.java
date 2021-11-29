@@ -86,9 +86,10 @@ class Jogo{
     }
     public int comprar_carta() {
     	boolean fim = false;
-    	int contagem = 0;	
-    	while(!fim) {
-			carta = random.nextInt(18)+1;
+    	int contagem = 0;
+    	 	int cartasList[] = {4,7};
+			int indRCart = random.nextInt(1);
+			carta=cartasList[indRCart];
 			for(int c: cartas_compradas) {
 				if(carta == c) {
 					contagem = 0;
@@ -99,7 +100,6 @@ class Jogo{
 			if(contagem == ind_cartas) {
 				fim = true;
 			}
-    	}
     	cartas_compradas[ind_cartas] = carta;
     	ind_cartas += 1;
     	return carta;
@@ -122,10 +122,11 @@ class Jogo{
     		if(meta) {/*adiciona a meta ao jogador e soma os pontos*/
     			jog[ind_jog].addmeta();
     			jog[ind_jog].somarpontos(1);
-				//int c = comprar_carta();
-    			//jog[ind_jog].addcarta(c);
+				int c = comprar_carta();
+    			jog[ind_jog].addcarta(c);
+    			int prntCarta = c+1;
     			System.out.println("Ganhou uma meta!");
-
+    			System.out.println("Ganhou uma carta! " + "C0"+prntCarta);
     		}
     	}
     	else if(pos[1] == -1) {/*Se a posicao tiver um explorador de outro jogador*/
@@ -192,7 +193,10 @@ class Jogo{
         }
         /*Se a posicao que o explorador for movimentar tiver no maximo 1 explorador do outro jogador (ou time se for modo 1) ou for o polo oposto*/
         if(((ver_pos(ind_jog,dis[1],dis[0])[1] > -2    && capturar(ind_jog,dis[1],dis[0])) ||  jog[ind_jog].polo_oposto[0] == dis[0]) && jog[ind_jog].polo[0] != dis[0]){
-        	
+        	if ((jog[ind_jog].ind_cartas)!=0) 
+        	{
+        		System.out.println("Você tem carta(s) para uso! " + jog[ind_jog].ind_cartas);
+        	}
         	jog[ind_jog].setposicao(ind_exp, dis[1], dis[0]);
         	return 1;
         }        
