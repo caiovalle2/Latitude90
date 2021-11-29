@@ -88,7 +88,7 @@ class Jogo{
     	boolean fim = false;
     	int contagem = 0;
     	 	int cartasList[] = {4,7};
-			int indRCart = random.nextInt(1);
+			int indRCart = random.nextInt(1)+1;
 			carta=cartasList[indRCart];
 			for(int c: cartas_compradas) {
 				if(carta == c) {
@@ -196,6 +196,11 @@ class Jogo{
         	if ((jog[ind_jog].ind_cartas)!=0) 
         	{
         		System.out.println("Você tem carta(s) para uso! " + jog[ind_jog].ind_cartas);
+        		if (jog[ind_jog].getcartas()[jog[ind_jog].ind_cartas]==7) 
+        		{
+        			conquista_polo(ind_jog,ind_exp);
+        		}
+        		
         	}
         	jog[ind_jog].setposicao(ind_exp, dis[1], dis[0]);
         	return 1;
