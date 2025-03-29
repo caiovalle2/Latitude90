@@ -28,5 +28,5 @@ O objetivo do jogo é ser o primeiro jogador ou equipe a **alcançar o polo adve
 - **Mapeamento Dinâmico**: O jogo possui um **mapa interativo** onde as peças se movem conforme o número sorteado nos dados.
 - **Salvar e Carregar Partidas**: A qualquer momento, você pode **salvar seu progresso** e **carregar** a partida salva quando desejar continuar.
 
-![Captura de tela 2025-03-29 101904](https://github.com/user-attachments/assets/70800656-d1b5-4dac-aa6f-40d175028b5f)
-![Captura de tela 2025-03-29 102148](https://github.com/user-attachments/assets/8e4f5c40-b599-4ce7-9ef7-dd04cb9b998a)
+![Captura de tela 2025-03-29 103844](https://github.com/user-attachments/assets/6a928f32-77db-4988-b1fb-8a2a47895b3b)
+![Captura de tela 2025-03-29 104416](https://github.com/user-attachments/assets/0bf0eee4-3191-4290-ab3a-ef3c6b227de3)
